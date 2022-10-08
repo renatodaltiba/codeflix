@@ -100,7 +100,30 @@ describe('Category Unit Tests', () => {
     expect(category.description).toBe(null)
   })
 
-  
+  test('getter and setter of is_active field', () => {
+    let category = new Category({
+      name: 'movie',
+    })
 
+    expect(category.is_active).toBe(true)
 
+     category = new Category({
+      name: 'movie',
+      is_active: false,
+    })
+
+    expect(category.is_active).toBe(false)
+
+    category = new Category({
+      name: 'movie',
+    })
+
+    category['is_active'] = false
+
+    expect(category.is_active).toBe(false)
+
+    category['is_active'] = undefined
+
+    expect(category.is_active).toBe(true)
+  })
 });
