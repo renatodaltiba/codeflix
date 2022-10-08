@@ -64,4 +64,12 @@ describe('Category Unit Tests', () => {
       created_at
     })
   })
+
+  test('getter of name field', () => {
+    const category = new Category({
+      name: 'movie',
+    })
+
+    expect(category.name).toBe('movie')
+  })
 });
