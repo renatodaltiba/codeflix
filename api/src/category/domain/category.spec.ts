@@ -72,4 +72,35 @@ describe('Category Unit Tests', () => {
 
     expect(category.name).toBe('movie')
   })
+
+  test('getter and setter of description field', () => {
+    let category = new Category({
+      name: 'movie',
+    })
+
+    expect(category.description).toBe(null)
+
+     category = new Category({
+      name: 'movie',
+      description: 'any_description',
+    })
+
+    expect(category.description).toBe('any_description')
+
+    category = new Category({
+      name: 'movie',
+    })
+
+    category['description'] = 'other description'
+
+    expect(category.description).toBe('other description')
+
+    category['description'] = undefined
+
+    expect(category.description).toBe(null)
+  })
+
+  
+
+
 });
