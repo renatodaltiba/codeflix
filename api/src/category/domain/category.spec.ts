@@ -126,4 +126,20 @@ describe('Category Unit Tests', () => {
 
     expect(category.is_active).toBe(true)
   })
+
+  test('getter of created_at prop', () => {
+    let category = new Category({
+      name: 'movie',
+    })
+
+    expect(category.created_at).toBeInstanceOf(Date);
+
+    let created_at = new Date()
+    category = new Category({
+      name: 'movie',
+      created_at,
+    })
+
+    expect(category.created_at).toBe(created_at)
+  })
 });
