@@ -1,5 +1,5 @@
-import InvalidUuidError from "../../@shared/errors/invalid-uuid.error";
-import UniqueEntityId from "./unique-entity-id.vo";
+import InvalidUuidError from "../../../../@shared/errors/invalid-uuid.error";
+import UniqueEntityId from "../unique-entity-id.vo";
 import { validate as uuidValidate, validate } from "uuid";
 
 describe("UniqueEntity Id Value Object", () => {
@@ -21,9 +21,9 @@ describe("UniqueEntity Id Value Object", () => {
   });
 
   it("should accept a uuid passed in constructor", () => {
-    const vo = new UniqueEntityId();
+    const vo = new UniqueEntityId().value;
 
-    expect(uuidValidate(vo.id)).toBeTruthy();
+    expect(uuidValidate(vo)).toBeTruthy();
     expect(validateSpy).toHaveBeenCalled();
   });
 });
