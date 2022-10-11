@@ -14,4 +14,27 @@ describe("Value Object Unit Tests", () => {
       name: "any_name",
     });
   });
+
+  it("should convert to a string", () => {
+    const date = new Date();
+
+    let arrange = [
+      { received: null, expected: "null" },
+      { received: undefined, expected: "undefined" },
+      { received: 0, expected: "0" },
+      { received: 1, expected: "1" },
+      { received: "any_string", expected: "any_string" },
+      { received: true, expected: "true" },
+      { received: false, expected: "false" },
+      { received: date, expected: date.toString() },
+      { received: { name: "any_name" }, expected: '{"name":"any_name"}' },
+      { received: [1, 2, 3], expected: "1,2,3" },
+    ];
+
+    arrange.forEach((item) => {
+      const vo = new StubValueObject(item.received);
+
+      expect(vo + "").toBe(item.expected);
+    });
+  });
 });
